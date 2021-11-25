@@ -373,7 +373,7 @@ public class BMP {
                 fileSize = 54 + (width * height * 3) + height * padding;
                 break;
             case 32:
-                fileSize = 70 + (width * height * 4);
+                fileSize = 74 + (width * height * 4);
                 break;
             default:
                 close();
@@ -410,8 +410,8 @@ public class BMP {
                     }
                     break;
                 case 32:
-                    writer.write(encode(makeLittleEndian(70)));
-                    writer.write(encode(makeLittleEndian(56)));
+                    writer.write(encode(makeLittleEndian(138)));
+                    writer.write(encode(makeLittleEndian(124)));
                     writer.write(encode(makeLittleEndian(width)));
                     writer.write(encode(makeLittleEndian(height)));
                     writer.write(encode(makeLittleEndian(1, 2)));
@@ -428,6 +428,10 @@ public class BMP {
                     writer.write(encode("0000FF00"));
                     writer.write(encode("00FF0000"));
                     writer.write(encode("FF000000"));
+                    writer.write("BGRs");
+                    for(int i = 0; i < 16; i++) {
+                        writer.write(encode(fourBytes));
+                    }
                     break;
             }
             for (int i = height - 1; i >= 0; i--) {
