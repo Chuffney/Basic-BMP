@@ -96,7 +96,7 @@ public class BMP {
             throw new IllegalArgumentException("Image width must be greater than zero. Assigned width: " + width);
         }
         if (height <= 0) {
-            throw new IllegalArgumentException("Image width must be greater than zero. Assigned width: " + height);
+            throw new IllegalArgumentException("Image height must be greater than zero. Assigned height: " + height);
         }
         this.width = width;
         this.height = height;
